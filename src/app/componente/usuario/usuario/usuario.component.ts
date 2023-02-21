@@ -27,6 +27,10 @@ export class UsuarioComponent implements OnInit {
   }
   //DELETANDO USUÁRIO
   deleteUsuario(id: Number){
+      if(confirm('Deseja mesmo remover?')){
+
+           //msg ao deletar
+
       this.usuarioService.deletarUsuario(id).subscribe(data =>{
          console.log("Retorno do método delete : " + data);
          //METODO QUE CARREGA A LISTA
@@ -35,6 +39,7 @@ export class UsuarioComponent implements OnInit {
           console.log(this.students);
         });
       });
+    }
   }
   //CONSULTAR USUÁRIO
   consultarUsuario(){
