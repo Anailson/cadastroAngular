@@ -1,3 +1,4 @@
+import { GuardiaoGuard } from './Service/guardiao.guard';
 //import { UsuarioComponent } from './componente/usuario/usuario/usuario.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ModuleWithProviders } from '@angular/compiler/src/core';
@@ -17,12 +18,13 @@ import { HttpInterceptorModule } from './Service/header-interceptor.service';
 
 /*DECLARANDO AS ROTAS */
 export const appRouters: Routes = [
-      {path: 'home', component: HomeComponent},
+      {path: 'home', component: HomeComponent, canActivate:[GuardiaoGuard]},
       {path: 'login', component: LoginComponent},
       {path: '', component: LoginComponent}, //acessando a raiz do projeto vai para o login
-      {path: 'usuarioList', component: UsuarioComponent},
-      {path: 'usuarioAdd', component: UsuarioAddComponent},
-      {path: 'usuarioAdd/:id', component: UsuarioAddComponent},
+      {path: 'usuarioList', component: UsuarioComponent, canActivate:[GuardiaoGuard]},
+      {path: 'usuarioAdd', component: UsuarioAddComponent, canActivate:[GuardiaoGuard]},
+      {path: 'usuarioAdd/:id', component: UsuarioAddComponent, canActivate:[GuardiaoGuard]},
+      //GuardiaoGuard so mostra as rotas qd o usuário está logado na aplicação
 ];
 
 export const routes : ModuleWithProviders = RouterModule.forRoot(appRouters);
