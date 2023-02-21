@@ -28,6 +28,7 @@ export class AppComponent implements OnInit {
     this.router.navigate(['login']);//AO SAIR TELA DE LOGIN
   }
 
+  //METODO QUE ESCONDER A BARRA AO LOGAR
   public esconderBarrar(){
     if(localStorage.getItem('token') !== null && localStorage.getItem('token')?.toString().trim()!== null){
         return false;
